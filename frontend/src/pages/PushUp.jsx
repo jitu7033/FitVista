@@ -12,7 +12,7 @@ export default function PushUpCounter() {
   const canvasRef = useRef(null);
   const detectorRef = useRef(null);
   let lastDown = false;
-
+  
   // Load Model and Start Camera
   useEffect(() => {
     const loadModel = async () => {

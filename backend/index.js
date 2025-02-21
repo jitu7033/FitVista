@@ -26,14 +26,8 @@ app.use(
     })
 );
 
-
-
 app.use(express.json());
 app.use(cookieParser());
-
-// Example route (uncomment when you define these routers)
-// app.use("/api/v1/auth", authRouter);
-// app.use("/api/v1/message", messageRouter);
 
 app.listen(PORT, () => {
     console.log("Server is running at:", PORT);

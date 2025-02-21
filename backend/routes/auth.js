@@ -50,6 +50,7 @@ router.post("/login", async (req, res) => {
     }
     else{
       res.status(200).json({ message: "Login successful" });
+      localStorage.setItem("token", response.data.token); // Store the token
     }
     // Generate JWT token
     const token = jwt.sign({ userId: user._id }, your_jwt_secret, { expiresIn: "1h" });
