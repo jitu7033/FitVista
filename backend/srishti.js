@@ -1,1 +1,1 @@
-const srishti = 1;
+const srishti = 1
