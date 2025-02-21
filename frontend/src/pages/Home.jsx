@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import Section1 from "../components/Section1";
 
 const Home = () => {
   // Creating refs for sections
@@ -22,7 +23,7 @@ const Home = () => {
 
       {/* Sections */}
       <div ref={homeRef} style={{ height: "100vh", background: "lightblue", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <h1>Home Section</h1>
+        <Section1/>
       </div>
       <div ref={aboutRef} style={{ height: "100vh", background: "lightgreen", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <h1>About Section</h1>
