@@ -1,6 +1,7 @@
 import { FaUser } from "react-icons/fa";
 import {Link} from "react-router-dom";
 
+
 const Navbar = () => {
   return (
     <nav className="bg-black text-white py-4 px-8 flex justify-between items-center">
