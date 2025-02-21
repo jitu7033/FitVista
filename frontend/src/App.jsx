@@ -21,6 +21,7 @@ function App() {
   const Navigate = useNavigate();
   return (
     <>
+    <Navbar/>
       <Routes>
         {/* linking the pages */}
         <Route path="/" element={<Home />}></Route>
@@ -40,6 +41,7 @@ function App() {
         <Route path="/section2" element={<Section2/>}></Route>
         <Route path="/section3" element={<Section3/>}></Route>
       </Routes>
+      <Footer/>
     </>
   );
 }

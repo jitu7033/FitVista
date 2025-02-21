@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import Section1 from "../components/Section1";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
   // Creating refs for sections
@@ -15,12 +16,12 @@ const Home = () => {
   return (
     <div>
       {/* Navbar */}
-      <nav style={{ position: "fixed", top: 0, width: "100%", background: "#000", color: "#fff", padding: "10px", display: "flex", gap: "15px" }}>
+      {/* <nav style={{ position: "fixed", top: 0, width: "100%", background: "#000", color: "#fff", padding: "10px", display: "flex", gap: "15px" }}>
         <button onClick={() => scrollToSection(homeRef)}>Home</button>
         <button onClick={() => scrollToSection(aboutRef)}>About</button>
         <button onClick={() => scrollToSection(contactRef)}>Contact</button>
-      </nav>
-
+      </nav> */}
+     
       {/* Sections */}
       <div ref={homeRef} style={{ height: "100vh", background: "lightblue", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Section1/>
