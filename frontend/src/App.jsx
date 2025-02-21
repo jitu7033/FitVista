@@ -15,6 +15,8 @@ import Section1 from "./components/Section1";
 import Section2 from "./components/Section2";
 import Section3 from "./components/Section3";
 import Feedback from "./pages/Feedback";
+import PushUp from "./pages/PushUp";
+// import Squat from "./pages/Squat";
 
 function App() {
   const isAuthenticated = localStorage.getItem("user") !== null;
@@ -40,6 +42,7 @@ function App() {
         <Route path="/section1" element={<Section1/>}></Route>
         <Route path="/section2" element={<Section2/>}></Route>
         <Route path="/section3" element={<Section3/>}></Route>
+        <Route path="/pushup" element={<PushUp/>}></Route>
       </Routes>
       <Footer/>
     </>
