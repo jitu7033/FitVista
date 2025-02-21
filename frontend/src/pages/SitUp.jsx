@@ -1,8 +1,9 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import * as poseDetection from '@tensorflow-models/pose-detection';
 
-export default function SquatCounter() {
+export default function SitUpCounter() {
   const [count, setCount] = useState(0);
   const [timeLeft, setTimeLeft] = useState(60);
   const [isRunning, setIsRunning] = useState(false);
@@ -70,19 +71,19 @@ export default function SquatCounter() {
           const hipKneeDistance = Math.abs(hipY - kneeY);
           const kneeAnkleDistance = Math.abs(kneeY - ankleY);
 
-          // Define thresholds for squat detection
-          const squatThreshold = 50; // Adjust based on user height and camera distance
-          const standThreshold = 20; // Adjust based on user height and camera distance
+          // Define thresholds for sit-up detection
+          const sitUpThreshold = 50; // Adjust based on user height and camera distance
+          const lieDownThreshold = 20; // Adjust based on user height and camera distance
 
-          // Check if the user is in a squat position
-          if (hipKneeDistance > squatThreshold && kneeAnkleDistance < standThreshold) {
-            if (lastPositionRef.current === 'standing' && Date.now() - lastCountTimeRef.current > 1000) {
-              lastPositionRef.current = 'squatting';
+          // Check if the user is in a sit-up position
+          if (shoulderHipDistance > sitUpThreshold && hipKneeDistance < lieDownThreshold) {
+            if (lastPositionRef.current === 'lying' && Date.now() - lastCountTimeRef.current > 1000) {
+              lastPositionRef.current = 'sitting';
             }
-          } else if (hipKneeDistance < standThreshold && kneeAnkleDistance > squatThreshold) {
-            if (lastPositionRef.current === 'squatting') {
+          } else if (shoulderHipDistance < lieDownThreshold && hipKneeDistance > sitUpThreshold) {
+            if (lastPositionRef.current === 'sitting') {
               setCount((prev) => prev + 1);
-              lastPositionRef.current = 'standing';
+              lastPositionRef.current = 'lying';
               lastCountTimeRef.current = Date.now(); // Debounce
             }
           }
@@ -117,7 +118,6 @@ export default function SquatCounter() {
       });
     });
   };
-
   const startCamera = async () => {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     videoRef.current.srcObject = stream;
@@ -137,7 +137,8 @@ export default function SquatCounter() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 p-4">
+    <div className="mt-30 flex flex-col items-center justify-center space-y-4 p-4">
+      <h2 className="text-2xl font-bold">SQUAT COUNTER</h2>
       <div className="relative w-120 h-95 border rounded-md overflow-hidden">
         <video ref={videoRef} autoPlay playsInline className="absolute top-0 left-0 w-full h-full" />
         <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" width="640" height="480" />

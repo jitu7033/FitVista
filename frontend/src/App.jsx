@@ -12,6 +12,8 @@ import About from "./pages/About";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Feedback from "./pages/Feedback";
+import PushUp from "./pages/PushUp.jsx";
+import SitUp from "./pages/SitUp.jsx";
 
 function App() {
   // Creating Refs for Navigation
@@ -37,6 +39,9 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+
+        <Route path="/pushup" element={<PushUp />} />
+        <Route path="/situp" element={<SitUp />} />
       </Routes>
 
       <Footer />

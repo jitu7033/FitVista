@@ -9,7 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const history = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ const Login = () => {
       setError("Both fields are required!");
       return;
     }
-  //  navigate("/landing") // Redirect to landing page
+  //  history("/landing") // Redirect to landing page
 
     try {
       const response = await axios.post("http://localhost:5000/api/auth/login", {
@@ -28,7 +28,7 @@ const Login = () => {
       // On successful login, store token and redirect
       localStorage.setItem("token", response.data.token); // Store the token
       localStorage.setItem("client", JSON.stringify(response.data.user)); // Store the user details
-      navigate("/"); // Redirect to landing page
+      history("/"); // Redirect to landing page
     } catch (err) {
       console.error(err.response.data.message);
       setError(err.response.data.message); // Show error message from backend

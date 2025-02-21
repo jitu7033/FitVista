@@ -8,11 +8,12 @@ export default function PushUpCounter() {
   const [timeLeft, setTimeLeft] = useState(60);
   const [isRunning, setIsRunning] = useState(false);
   const [selectedTime, setSelectedTime] = useState(60);
+  const [showSummary, setShowSummary] = useState(false);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const detectorRef = useRef(null);
   let lastDown = false;
-  
+
   // Load Model and Start Camera
   useEffect(() => {
     const loadModel = async () => {
@@ -33,6 +34,7 @@ export default function PushUpCounter() {
       }, 1000);
     } else if (timeLeft === 0) {
       setIsRunning(false);
+      setShowSummary(true); // Show summary when time runs out
     }
     return () => clearInterval(interval);
   }, [isRunning, timeLeft]);
@@ -107,6 +109,7 @@ export default function PushUpCounter() {
     setCount(0);
     setTimeLeft(selectedTime);
     setIsRunning(true);
+    setShowSummary(false); // Hide summary when new session starts
   };
 
   const stopTimer = () => {
@@ -117,10 +120,17 @@ export default function PushUpCounter() {
     setCount(0);
     setTimeLeft(selectedTime);
     setIsRunning(false);
+    setShowSummary(false);
   };
 
+  // Calculate Calories Burned
+  const caloriesBurned = (count * 1.5).toFixed(2);
+  const pushUpRate = count / (selectedTime / 60); // Push-ups per minute
+  const intensityScore = (pushUpRate * 10).toFixed(1); // Example intensity metric
+
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 p-4">
+    <div className="mt-30 flex flex-col items-center justify-center space-y-4 p-4">
+      <h2 className="text-2xl font-bold">Push Up Counter</h2>
       <div className="relative w-120 h-95 border rounded-md overflow-hidden">
         <video ref={videoRef} autoPlay playsInline className="absolute top-0 left-0 w-full h-full" />
         <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" width="640" height="480" />
@@ -141,10 +151,20 @@ export default function PushUpCounter() {
           Reset
         </button>
       </div>
-      <div className="text-center space-y-2">
-        <div className="text-lg font-bold">Time Left: {timeLeft}s</div>
-        <div className="text-2xl font-bold text-green-600">Push-Ups: {count}</div>
-      </div>
+      
+      {!showSummary ? (
+        <div className="text-center space-y-2">
+          <div className="text-lg font-bold">Time Left: {timeLeft}s</div>
+          <div className="text-2xl font-bold text-green-600">Push-Ups: {count}</div>
+        </div>
+      ) : (
+        <div className="bg-gray-100 p-4 rounded-lg shadow-lg text-center mt-4">
+          <h3 className="text-xl font-bold text-gray-800">Workout Summary</h3>
+          <p className="text-lg text-blue-600">Total Push-Ups: {count}</p>
+          <p className="text-lg text-red-500">Calories Burned: {caloriesBurned} kcal</p>
+          <p className="text-lg text-purple-500">Intensity Score: {intensityScore}</p>
+        </div>
+      )}
     </div>
   );
 }

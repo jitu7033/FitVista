@@ -22,6 +22,7 @@ const Register = () => {
       setError("Passwords do not match!");
       return;
     }
+
     try {
       const response = await axios.post("http://localhost:5000/api/auth/register", {
         email,
@@ -29,7 +30,6 @@ const Register = () => {
       });
       alert(response.data.message); // Show success message
       setlocalStorage.setItem("token", response.data.token); // Store the token
-      setlocalStorage.setItem("client", JSON.stringify(response.data.user)); // Store the user details
       history.push("/login"); // Redirect to login page
     } catch (err) {
       setError(err.response.data.message); // Show error message from backend
