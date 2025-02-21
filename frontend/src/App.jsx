@@ -2,8 +2,8 @@ import { React, use } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
-import Signup from "./pages/Signup";
-import Signin from "./pages/Signin";
+import Signup from "./pages/Register";
+import Signin from "./pages/Login";
 import Leaderboard from "./components/Leaderboard";
 import Profile from "./pages/Profile";
 import ExerciseList from "./pages/ExerciseList";
@@ -25,8 +25,8 @@ function App() {
       <Routes>
         {/* linking the pages */}
         <Route path="/" element={<Home />}></Route>
-        <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/login" element={<Signin />}></Route>
+        <Route path="/register" element={<Signup />}></Route>
+        <Route path="/login" element={<Signin/>}></Route>
         <Route path="/profile" element={<Profile/>}></Route>
         <Route path="/exerciseList" element={<ExerciseList />}></Route>
         <Route path="/feedback" element={<Feedback/>}></Route>

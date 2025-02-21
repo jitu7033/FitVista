@@ -1,4 +1,5 @@
 import { FaUser } from "react-icons/fa";
+import {Link} from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -20,7 +21,9 @@ const Navbar = () => {
         </button>
         <div className="flex items-center space-x-1 cursor-pointer hover:text-gray-400">
           <FaUser className="text-lg" />
-          <span>Log In</span>
+          <Link to="/login">
+            <span>Log In</span>
+          </Link>
         </div>
       </div>
     </nav>

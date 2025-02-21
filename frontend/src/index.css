@@ -1,4 +1,9 @@
 @import "tailwindcss";
+
+.body {
+  background-color: black;
+  color: white;
+}
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
       display: none;
