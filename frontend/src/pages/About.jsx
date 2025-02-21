@@ -11,6 +11,7 @@ const About = () => {
             className="w-full h-full object-cover"
           />
         </div>
+
         {/* Right Section - Text with Equal Height */}
         <div className="w-1/2 h-screen bg-black text-white flex flex-col justify-center p-12">
           <h2 className="text-5xl font-bold">About FitVista</h2>

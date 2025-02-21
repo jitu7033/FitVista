@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const ExerciseList = () => {
   return (
-    <div className="bg-black min-h-screen text-white flex flex-col items-center">
+    <div className="bg-black min-h-screen text-white flex flex-col items-center mt-15">
       <div className="text-center">
         <h1 className="font-bold text-5xl m-5 p-5">Our Challenges</h1>
       </div>

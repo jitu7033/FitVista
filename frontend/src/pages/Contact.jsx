@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 
-const ContactUs = () => {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -127,4 +127,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default Contact;

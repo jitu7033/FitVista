@@ -15,6 +15,37 @@ export default function PushUpCounter() {
   let lastDown = false;
 
   // Load Model and Start Camera
+
+  const saveWorkoutSummary = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/save-workout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: "user@example.com", // Replace with actual user email
+          pushUps: count,
+          caloriesBurned: parseFloat(caloriesBurned),
+          intensityScore: parseFloat(intensityScore),
+        }),
+      });
+  
+      const data = await response.json();
+      console.log(data.message);
+    } catch (error) {
+      console.error("Error saving workout:", error);
+    }
+  };
+
+
+  
+  // Call this function when workout ends
+  useEffect(() => {
+    if (showSummary) {
+      saveWorkoutSummary();
+    }
+  }, [showSummary]);
+  
+
   useEffect(() => {
     const loadModel = async () => {
       await tf.ready();

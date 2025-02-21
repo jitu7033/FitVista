@@ -17,7 +17,7 @@ const Login = () => {
     if (!email || !password) {
       setError("Both fields are required!");
       return;
-    }
+    } 
   //  history("/landing") // Redirect to landing page
 
     try {

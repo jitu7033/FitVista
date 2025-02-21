@@ -1,18 +1,16 @@
 import React from "react";
 import Section1 from "../components/Section1";
+import Section2 from "../components/Section2";
 
 const Home = ({ homeRef, aboutRef, contactRef }) => {
   return (
-    <div>
+    <div className="flex flex-col">
       {/* Sections */}
-      <div ref={homeRef} className="h-screen bg-lightblue flex items-center justify-center">
+      <div ref={homeRef} className="min-h-screen bg-lightblue flex items-center justify-center">
         <Section1 />
       </div>
-      <div ref={aboutRef} className="h-screen bg-lightgreen flex items-center justify-center">
-        <h1>About Section</h1>
-      </div>
-      <div ref={contactRef} className="h-screen bg-lightcoral flex items-center justify-center">
-        <h1>Contact Section</h1>
+      <div ref={aboutRef} className="min-h-screen bg-lightgreen flex items-center justify-center">
+        <Section2 />
       </div>
     </div>
   );
