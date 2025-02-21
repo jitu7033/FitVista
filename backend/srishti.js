@@ -1,1 +1,2 @@
-const srishti = 1;
+const srishti = 1
+var srisht = 2
